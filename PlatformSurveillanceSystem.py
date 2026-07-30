@@ -19,8 +19,8 @@ def ProcessScan():
             print("Unable to fetch process information:")
         
 
-    listprocess.append(info)
-    return listprocess
+       listprocess.append(info)
+       return listprocess
 
 
 def PlatformSurvillance(FolderName,ReceiverMail):
