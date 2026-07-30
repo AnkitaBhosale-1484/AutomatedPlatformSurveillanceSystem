@@ -8,16 +8,15 @@ from SendMail import SendMail
 def ProcessScan():
     listprocess=[]
 
-    try:
-        for proc in psutil.process_iter():
+    
+    for proc in psutil.process_iter():
+        try:
             info=proc.as_dict(attrs=["pid","name","username","status"])
             info["cpu_percent"] = proc.cpu_percent(None)
             info["memory_percent"] = proc.memory_percent()
-    except (psutil.NoSuchProcess, 
-                psutil.AccessDenied, 
-                psutil.ZombieProcess):
-         
-         print("Unable to fetch process information:")
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            
+            print("Unable to fetch process information:")
         
 
     listprocess.append(info)
